@@ -1,49 +1,18 @@
-const initState = {
-  filters: {
-    search: "",
-    status: "all",
-    priority: [],
-  },
-  todoList: [
-    {
-      id: 1,
-      name: "Learn yoga",
-      completed: false,
-      priority: "Medium",
-    },
-    {
-      id: 1,
-      name: "Learn yoga",
-      completed: false,
-      priority: "Medium",
-    },
-    {
-      id: 1,
-      name: "Learn yoga",
-      completed: false,
-      priority: "Medium",
-    },
-  ],
+// import { combineReducers } from "redux";
+import filtersReducer from "../components/Filters/FiltersSlice";
+import todoListReducer from "../components/TodoList/TodosSlice";
+
+const rootReducer = (state = {}, action) => {
+  return {
+    filters: filtersReducer(state.filters, action),
+    todoList: todoListReducer(state.todoList, action),
+  };
 };
 
-const rootReducer = (state = initState, action) => {
-  switch (action.type) {
-    case "todoList/addTodo":
-      return {
-        ...state,
-        todoList: [...state.todoList, action.payload],
-      };
-    case "filters/searchFilterChange":
-      return {
-        ...state,
-        filters: {
-          ...state.filters,
-          search: action.payload,
-        },
-      };
-    default:
-      return state;
-  }
-};
+// combineReducers
+// const rootReducer = combineReducers({
+//   filters: filtersReducer,
+//   todoList: todoListReducer,
+// });
 
 export default rootReducer;

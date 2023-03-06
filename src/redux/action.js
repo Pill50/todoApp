@@ -5,10 +5,30 @@ export const addTodo = (data) => {
   };
 };
 
-export const searchFilterChange = (text) => {
-    return {
-      type: "filters/searchFilterChange",
-      payload: text,
-    };
+export const toggleTodoStatus = (todoID) => {
+  return {
+    type: "todoList/toggleTodoStatus",
+    payload: todoID
   };
-  
+};
+
+export const searchFilterChange = (text) => {
+  return {
+    type: "filters/searchFilterChange",
+    payload: text,
+  };
+};
+
+export const statusFilterChange = (status) => {
+  return {
+    type: "filters/statusFilterChange",
+    payload: status,
+  };
+};
+
+export const priorityFilterChange = (priorities) => {
+  return {
+    type: "filters/prioritiesFilterChange",
+    payload: priorities,
+  };
+};
